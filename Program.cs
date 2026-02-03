@@ -1,6 +1,6 @@
 using Wolverine;
-using Wolverine.Http;
-using WolverineTest.Modules.Product;
+using WolverineTest.Modules.Product.Actions;
+using WolverineTest.Modules.Product.Store;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,10 +10,11 @@ builder.Services
 
 builder.Host.UseWolverine(x =>
 {
-    x.Discovery.IncludeAssembly(typeof(ProductEndpoints).Assembly);
+    x.Discovery.IncludeAssembly(typeof(Program).Assembly);
 });
 
-builder.Services.AddWolverineHttp();
+builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+builder.Services.AddScoped<IProductRepository, ProductRespository>();
 
 var app = builder.Build();
 
@@ -24,6 +25,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapWolverineEndpoints();
+app.MapControllers();
 
 app.Run();

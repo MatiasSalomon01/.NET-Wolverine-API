@@ -1,6 +1,16 @@
-﻿namespace WolverineTest.Modules.Product.Store;
+﻿using WolverineTest.Modules.Product.Actions;
 
-public interface IProductRepository
+namespace WolverineTest.Modules.Product.Store;
+
+public interface IProductRepository : IBaseRepository<ProductEntity>
 {
-    Task<int> Create(Product entity);
+    Task<int> CreateV2(ProductEntity entity);
+}
+
+public class ProductRespository : BaseRepository<ProductEntity>, IProductRepository
+{
+    public Task<int> CreateV2(ProductEntity entity)
+    {
+        throw new NotImplementedException();
+    }
 }

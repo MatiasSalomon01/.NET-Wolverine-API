@@ -9,7 +9,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.2" />
     <PackageReference Include="WolverineFx" Version="5.12.1" />
-    <PackageReference Include="WolverineFx.Http" Version="5.12.1" />
     <PackageReference Include="WolverineFx.Postgresql" Version="5.12.1" />
   </ItemGroup>
 
